@@ -10,14 +10,15 @@
     </div>
     <!-- @ngIf -->
     <div>
+        <h3>Show employee using &#64;if</h3>
         @if (isYes) {
         {{ employees[0].name }}
-        } @else  {
+        } @else {
         {{ employees[1].name }}
         }
     </div>
     <div>
-        <h3>List of employees</h3>
+        <h3>List of employees using &#64;for</h3>
         @for (emp of employees; track emp.id) {
         <p>{{emp.id}} {{emp.name}} {{emp.salary}}</p>
         }
