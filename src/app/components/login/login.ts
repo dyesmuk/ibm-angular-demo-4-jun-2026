@@ -14,6 +14,13 @@ export class Login {
   user = { email: 'sonu@ibm.com', password: 'sonu123' };
   isIndian = false;
 
+  fun = () => {
+    console.log('fun function called.');
+    this.isIndian = !this.isIndian;
+  };
+
+
+
 }
 
 
