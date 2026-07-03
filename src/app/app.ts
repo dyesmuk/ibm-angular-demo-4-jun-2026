@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
+import { EmployeeList } from './components/employee-list/employee-list';
 
 @Component({
   selector: 'app-root',
-  imports: [Home, Login, Register],
+  imports: [Home, Login, Register, EmployeeList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
