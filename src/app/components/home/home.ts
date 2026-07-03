@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 console.log('Home');
 
@@ -7,6 +7,7 @@ console.log('Home');
     template: '<div><h1>Home Component</h1><p>This is home component.</p></div>'
 })
 export class Home {
-    protected readonly title = signal('ibm-angular-demo');
+
 }
+
 
