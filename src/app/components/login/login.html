@@ -1,6 +1,13 @@
 <div>
     <h1>Login Component</h1>
     <p>This is login component.</p>
-    <p> {{username}} </p>
     <p> {{user.email}} </p>
+    <p> {{username}} </p>
+    <p> {{username | uppercase}} </p>
+    <p> {{salary | currency}} </p>
+    <p> {{salary | currency : 'USD'}} </p>
+    <p> {{salary | currency : 'INR'}} </p>
+    <p> {{salary | currency : 'EUR'}} </p>
+    <p> {{ 'AbCdEf' | lowercase}} </p>
+    <p>{{ 10 + 2 == 12 }}</p>
 </div>
