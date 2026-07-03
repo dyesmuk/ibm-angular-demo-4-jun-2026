@@ -16,6 +16,8 @@ export class EmployeeList {
     { id: 3, name: 'Tonu', salary: 93000 }
   ];
 
+
+
   isYes = true;
 
   fun() {
@@ -24,3 +26,8 @@ export class EmployeeList {
 
 
 }
+
+// ngIf 
+// ngFor 
+// ngSwitch 
+
