@@ -9,14 +9,20 @@
         <ng-template #elseBlock>Name 2: {{employees[1].name}}</ng-template>
     </div>
     <!-- @ngIf -->
-    <div> 
+    <div>
         @if (isYes) {
         {{ employees[0].name }}
-        } @else {
+        } @else  {
         {{ employees[1].name }}
         }
     </div>
-    
+    <div>
+        <h3>List of employees</h3>
+        @for (emp of employees; track emp.id) {
+        <p>{{emp.id}} {{emp.name}} {{emp.salary}}</p>
+        }
+    </div>
+
 
 
 </div>
