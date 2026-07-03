@@ -1,7 +1,11 @@
 <div>
     <h1>Employee List Component</h1>
     <button (click)="fun()">Click</button>
-    <p [hidden]="isYes">Name1: {{employees[0].name}} </p>
-    <p *ngIf="isYes">Name 2: {{employees[0].name}}</p>
+    <br />
+    <!-- <p [hidden]="isYes">Name1: {{employees[0].name}} </p> -->
+    <div *ngIf="isYes; else elseBlock">Name 1: {{employees[0].name}}</div>
+    <div>
+        <ng-template #elseBlock>Name 2: {{employees[1].name}}</ng-template>
+    </div>
     <!-- @ngIf -->
 </div>
