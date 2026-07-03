@@ -1,8 +1,26 @@
 <div>
     <h1>Login Component</h1>
+    <!-- <p class="special">This is login component.</p> -->
+    <!-- <p [ngClass]="special">This is login component.</p> -->
+    <div [ngClass]="isSpecial ? 'special' : 'nonspecial'">This div is special</div>
+    <div [ngStyle]="currentStyles"> This div  becomes orange.</div>
+    <button (click)="fun()">Click</button>
+
+</div>
+
+<!-- <div>
+    <h1>Login Component</h1>
     <p>This is login component.</p>
     <h3>Data binding</h3>
-    
+    <h4>Interpolation </h4>
+    <p> {{user.email}} </p>
+    <p> {{username}} </p>
+    <p> {{username | uppercase}} </p>
+    <p> {{salary | currency}} </p>
+    <p> {{salary | currency : 'USD'}} </p>
+    <p> {{salary | currency : 'INR'}} </p>
+    <p> {{salary | currency : 'EUR'}} </p>
+    <p> {{ 'AbCdEf' | lowercase}} </p>
     <p>{{ 10 + 2 == 12 }}</p>
     <h4>Property binding</h4>
     <h4>Event binding</h4>
@@ -12,4 +30,4 @@
     <p> {{username}} </p>
     <input [(ngModel)]="username" />
 
-</div>
+</div> -->
