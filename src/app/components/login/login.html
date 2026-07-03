@@ -1,10 +1,15 @@
 <div>
     <h1>Login Component</h1>
     <p>This is login component.</p>
+    <h3>Data binding</h3>
+    
     <p>{{ 10 + 2 == 12 }}</p>
     <h4>Property binding</h4>
     <h4>Event binding</h4>
-    <button (click)="fun()" >Click</button>
+    <button (click)="fun()">Click</button>
     <p [hidden]="!isIndian">Indian</p>
+    <h4>Two way binding</h4>
+    <p> {{username}} </p>
+    <input [(ngModel)]="username" />
 
 </div>
