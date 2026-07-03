@@ -8,6 +8,5 @@ console.log('Home');
 })
 export class Home {
     protected readonly title = signal('ibm-angular-demo');
-
 }
 
