@@ -3,9 +3,20 @@
     <button (click)="fun()">Click</button>
     <br />
     <!-- <p [hidden]="isYes">Name1: {{employees[0].name}} </p> -->
+    <!-- <div *ngIf="isYes">Name 1: {{employees[0].name}}</div> -->
     <div *ngIf="isYes; else elseBlock">Name 1: {{employees[0].name}}</div>
     <div>
         <ng-template #elseBlock>Name 2: {{employees[1].name}}</ng-template>
     </div>
     <!-- @ngIf -->
+    <div> 
+        @if (isYes) {
+        {{ employees[0].name }}
+        } @else {
+        {{ employees[1].name }}
+        }
+    </div>
+    
+
+
 </div>
