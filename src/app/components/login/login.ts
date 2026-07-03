@@ -11,8 +11,8 @@ export class Login {
 
   username: string = 'Sonu';
   salary: number = 90000.50;
-
   user = { email: 'sonu@ibm.com', password: 'sonu123' };
+  isIndian = false;
 
 }
 

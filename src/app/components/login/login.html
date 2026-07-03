@@ -1,6 +1,8 @@
 <div>
     <h1>Login Component</h1>
     <p>This is login component.</p>
+    <h3>Data binding</h3>
+    <h4>Interpolation </h4>
     <p> {{user.email}} </p>
     <p> {{username}} </p>
     <p> {{username | uppercase}} </p>
@@ -10,4 +12,7 @@
     <p> {{salary | currency : 'EUR'}} </p>
     <p> {{ 'AbCdEf' | lowercase}} </p>
     <p>{{ 10 + 2 == 12 }}</p>
+    <h4>Property binding</h4>
+    <p [hidden]="!isIndian">Indian</p>
+
 </div>
