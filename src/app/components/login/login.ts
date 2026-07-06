@@ -3,7 +3,8 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight';
 import { UserService } from '../../services/user/user-service';
-import User from '../../models/user';
+import { LoginRequest } from '../../models/login-request.model';
+import { Employee } from '../../models/employee.model';
 
 @Component({
   selector: 'app-login',
@@ -13,25 +14,43 @@ import User from '../../models/user';
 })
 export class Login {
 
-  cdr = inject(ChangeDetectorRef);
-  userService = inject(UserService);
-  user: User = { id: 0, name: '', username: '', email: '' };
-
-  // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
-
-  // syntax with error handling 
-  loadUser = () => {
-    this.userService.getUser(4).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.user = data;
-        this.cdr.markForCheck();
-      },
-      error: (err) => { console.error(err); },
-      complete: () => { console.log('completed.') }
-    });
-  }
+ 
 }
+
+// import { CommonModule } from '@angular/common';
+// import { ChangeDetectorRef, Component, inject } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { HighlightDirective } from '../../directives/highlight';
+// import { UserService } from '../../services/user/user-service';
+// import User from '../../models/user.model';
+
+// @Component({
+//   selector: 'app-login',
+//   imports: [CommonModule, FormsModule, HighlightDirective],
+//   templateUrl: './login.html',
+//   styleUrl: './login.css',
+// })
+// export class Login {
+
+//   cdr = inject(ChangeDetectorRef);
+//   userService = inject(UserService);
+//   user: User = { id: 0, name: '', username: '', email: '' };
+
+//   // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
+
+//   // syntax with error handling 
+//   loadUser = () => {
+//     this.userService.getUser(4).subscribe({
+//       next: (data) => {
+//         console.log(data);
+//         this.user = data;
+//         this.cdr.markForCheck();
+//       },
+//       error: (err) => { console.error(err); },
+//       complete: () => { console.log('completed.') }
+//     });
+//   }
+// }
 
 
 // (abc) => {
