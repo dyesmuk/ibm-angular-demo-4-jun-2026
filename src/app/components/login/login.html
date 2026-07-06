@@ -1,6 +1,52 @@
 <div>
 
     <h1>Employee Login</h1>
+
+    <div>
+        <p>Admin</p>
+        <p>aditya.k@ems.local</p>
+        <p>pass1234</p>
+    </div>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="user.email" required email>
+
+        <br />
+
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="user.password" required>
+
+        <br />
+
+        <button type="submit" [disabled]="loginForm.invalid">
+            Login
+        </button>
+
+    </form>
+
+    @if (errorMessage()) {
+    <div>
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (loggedInUser(); as employee) {
+    <div>
+        <h3>Logged In Employee</h3>
+
+        <p>{{ employee.id }}</p>
+        <p>{{ employee.fullName }}</p>
+        <p>{{ employee.email }}</p>
+        <p>{{ token }}</p>
+    </div>
+    }
+
+</div>
+<!-- <div>
+
+    <h1>Employee Login</h1>
     <div>
         <p>Admin</p>
         <p>aditya.k@ems.local</p>
@@ -10,7 +56,11 @@
     <form (ngSubmit)="login()" #loginForm="ngForm">
         <label>Email</label>
         <input type="email" name="email" [(ngModel)]="user.email" required email>
-        
+        <br />
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="user.password" required>
+        <br />
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
     @if(errorMessage){
@@ -28,7 +78,7 @@
         <p>{{ token }}</p>
     </div>
     }
-</div>
+</div> -->
 
 <!-- <div>
     <h2>Observable / subscribe Demo</h2>

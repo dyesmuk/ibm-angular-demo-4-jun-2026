@@ -2,7 +2,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import User from '../../models/user.model';
 import { Employee } from '../../models/employee.model';
 import { LoginRequest } from '../../models/login-request.model';
 
@@ -11,6 +10,16 @@ import { LoginRequest } from '../../models/login-request.model';
 })
 export class UserService {
 
+  private http = inject(HttpClient);
+
+  // constructor(private http: HttpClient) { }
+
+  private baseUrl: string = 'http://localhost:3000';
+
+  loginUser(loginRequest: LoginRequest): Observable<Employee> {
+    console.log(loginRequest);
+    return this.http.post<Employee>(`${this.baseUrl}/api/auth/login`, loginRequest);
+  }
 }
 
 
