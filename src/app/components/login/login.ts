@@ -3,7 +3,6 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight';
 import { UserService } from '../../services/user/user-service';
-import { interval } from 'rxjs';
 import User from '../../models/user';
 
 @Component({
@@ -20,17 +19,32 @@ export class Login {
 
   // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
 
-
+    // syntax for no error handling 
   loadUser() {
     this.userService.getUser(4).subscribe((abc) => {
       console.log(abc);
       this.user = abc;
       this.cdr.markForCheck();
     });
-
-    // this.user 
-
   }
+
+
+  // syntax for no error handling 
+  // subscribe((v) => {})
+  // syntax with error handling 
+  // subscribe({next, error, complete})
+  // subscribe({next, error})
+  // subscribe({next: () => {}, error: () => {}, complete: () => {}})
+  // subscribe({next: (v) => {}, error: (e) => {}, complete: (c) => {}})
+
+  // syntax for no error handling 
+  // loadUser() {
+  //   this.userService.getUser(4).subscribe((abc) => {
+  //     console.log(abc);
+  //     this.user = abc;
+  //     this.cdr.markForCheck();
+  //   });
+  // }
 }
 
 
