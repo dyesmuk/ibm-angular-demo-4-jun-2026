@@ -19,33 +19,45 @@ export class Login {
 
   // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
 
-    // syntax for no error handling 
-  loadUser() {
-    this.userService.getUser(4).subscribe((abc) => {
-      console.log(abc);
-      this.user = abc;
-      this.cdr.markForCheck();
+  // syntax with error handling 
+  loadUser = () => {
+    this.userService.getUser(4).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.user = data;
+        this.cdr.markForCheck();
+      },
+      error: (err) => { console.error(err); },
+      complete: () => { console.log('completed.') }
     });
   }
-
-
-  // syntax for no error handling 
-  // subscribe((v) => {})
-  // syntax with error handling 
-  // subscribe({next, error, complete})
-  // subscribe({next, error})
-  // subscribe({next: () => {}, error: () => {}, complete: () => {}})
-  // subscribe({next: (v) => {}, error: (e) => {}, complete: (c) => {}})
-
-  // syntax for no error handling 
-  // loadUser() {
-  //   this.userService.getUser(4).subscribe((abc) => {
-  //     console.log(abc);
-  //     this.user = abc;
-  //     this.cdr.markForCheck();
-  //   });
-  // }
 }
+
+
+// (abc) => {
+//     console.log(abc);
+//     this.user = abc;
+//     this.cdr.markForCheck();
+//   }
+
+
+// syntax for no error handling
+// subscribe((v) => {})
+// syntax with error handling
+// subscribe({next, error, complete})
+// subscribe({next, error})
+// subscribe({next: () => {}, error: () => {}, complete: () => {}})
+// subscribe({next: (v) => {}, error: (e) => {}, complete: (c) => {}})
+
+// syntax for no error handling
+// loadUser() {
+//   this.userService.getUser(4).subscribe((abc) => {
+//     console.log(abc);
+//     this.user = abc;
+//     this.cdr.markForCheck();
+//   });
+// }
+// }
 
 
 

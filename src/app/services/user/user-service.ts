@@ -15,7 +15,7 @@ export class UserService {
   // constructor(private http: HttpClient) { }
 
   private baseUrl =
-    'https://jsonplaceholder.typicode.com/users';
+    'https://jsonplaceholder.typicodbbbe.com/users';
 
   getUser(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/${id}`);
