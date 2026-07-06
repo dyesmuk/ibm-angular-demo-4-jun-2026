@@ -1,13 +1,100 @@
 <div>
+    <h2>Observable / subscribe Demo</h2>
+    <button (click)="loadUser()">Load User Data</button>
+    <p>User data: {{user}}</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <h1>Login Component</h1>
+
+    <button (click)="loadUser()">Load User #2</button>
+
+    @if (user) {
+    <div>
+        <h3>{{ user.name }}</h3>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Website: {{ user.website }}</p>
+    </div>
+    }
+</div> -->
+<!-- <div>
+    <h1>Login Component</h1>
+
+    <button (click)="loadUser()">Load User #2</button>
+
+    @if (loading) {
+    <p>Loading...</p>
+    } @else if (error) {
+    <p class="error">{{ error }}</p>
+    } @else if (user) {
+    <div class="user-card">
+        <h3>{{ user.name }}</h3>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Website: {{ user.website }}</p>
+    </div>
+    }
+</div> -->
+
+<!-- <div>
+    <h1>Login Component</h1>
+
+    <button (click)="loadUser()">Load User #2</button>
+
+    @if (loading()) {
+    <p>Loading...</p>
+    } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+    } @else if (user()) {
+    <div class="user-card">
+        <h3>{{ user()!.name }}</h3>
+        <p>Username: {{ user()!.username }}</p>
+        <p>Email: {{ user()!.email }}</p>
+        <p>Phone: {{ user()!.phone }}</p>
+        <p>Website: {{ user()!.website }}</p>
+    </div>
+    }
+</div> -->
+
+<!-- <div>
     <h1>Login Component</h1>
     <p appHighlight>Highlight me!</p>
-    <!-- <p class="special">This is login component.</p> -->
-    <!-- <p [ngClass]="special">This is login component.</p> -->
+    <p class="special">This is login component.</p>
+    <p [ngClass]="special">This is login component.</p>
     <div [ngClass]="isSpecial ? 'special' : 'nonspecial'">This div is special</div>
     <div [ngStyle]="currentStyles"> This div becomes orange.</div>
     <button (click)="fun()">Click</button>
 
-</div>
+</div> -->
 
 <!-- <div>
     <h1>Login Component</h1>
