@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight';
 import { UserService } from '../../services/user/user-service';
 import { interval } from 'rxjs';
+import User from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,16 @@ import { interval } from 'rxjs';
 })
 export class Login {
 
+  cdr = inject(ChangeDetectorRef);
+
   constructor(private abc: ChangeDetectorRef, private userSrvice: UserService) { }
-  user = 'sonu';
+  user: User = { id: 0, name: '', username: '', email: '' };
 
   loadUser() {
     this.userSrvice.getUser(4).subscribe((abc) => {
       console.log(abc);
+      this.user = abc;
+      this.cdr.markForCheck();
     });
 
     // this.user 
