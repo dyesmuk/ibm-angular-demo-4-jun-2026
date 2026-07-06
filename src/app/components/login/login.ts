@@ -15,12 +15,14 @@ import User from '../../models/user';
 export class Login {
 
   cdr = inject(ChangeDetectorRef);
-
-  constructor(private abc: ChangeDetectorRef, private userSrvice: UserService) { }
+  userService = inject(UserService);
   user: User = { id: 0, name: '', username: '', email: '' };
 
+  // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
+
+
   loadUser() {
-    this.userSrvice.getUser(4).subscribe((abc) => {
+    this.userService.getUser(4).subscribe((abc) => {
       console.log(abc);
       this.user = abc;
       this.cdr.markForCheck();
