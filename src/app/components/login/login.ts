@@ -18,6 +18,12 @@ export class Login {
   cdr = inject(ChangeDetectorRef);
   userService = inject(UserService);
   user: LoginRequest = { email: '', password: '' };
+//   user2 = signal<LoginRequest>({ email: '', password: '' });
+
+// user2.set('') // setter 
+//   user2() // getter 
+
+
   loggedInUser = signal<Employee | null>(null);
   errorMessage = signal<string | null>(null);
   token: string = '';
