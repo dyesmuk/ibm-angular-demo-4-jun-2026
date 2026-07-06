@@ -13,6 +13,9 @@ export const routes: Routes = [
     { path: 'employees', component: EmployeeList },
 ];
 
+
 // import { Routes } from '@angular/router';
 
 // export const routes: Routes = [];
+
+
