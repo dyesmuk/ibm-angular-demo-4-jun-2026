@@ -1,9 +1,24 @@
 <div>
     <h1>Employee List Component</h1>
-    <button (click)="fun()">Click</button>
+    <div>
+        <button (click)="loadEmployees()">Load Employees</button>
+    </div>
+
+    @if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+    }
+
+    @if (pagination(); as page) {
+    <p>Page {{ page.page }} of {{ page.totalPages }} (Total: {{ page.total }})</p>
+    }
+
+    <div>
+        @for (emp of employees(); track emp.id) {
+        <p> {{ emp.fullName }} <a [routerLink]="['/employees', emp.id]">{{ emp.fullName }}</a> </p>
+        }
+    </div>
+
 </div>
-
-
 
 
 <!-- <div>

@@ -1,4 +1,4 @@
-// https://angular.dev/guide/forms/reactive-forms 
+
 
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -48,8 +48,6 @@ export class Register {
     });
   }
 }
-
-
 
 // import { Component, inject, signal } from '@angular/core';
 // import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
