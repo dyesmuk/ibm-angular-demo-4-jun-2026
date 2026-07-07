@@ -27,7 +27,7 @@ export class Login {
       next: (data) => {
         console.log(data);
         this.loggedInUser.set(data);
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', data.token); // store token 
         this.router.navigate(['/employees']);
       },
       error: (error) => {
