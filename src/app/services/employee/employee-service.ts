@@ -36,6 +36,10 @@ export class EmployeeService {
       { headers: this.getAuthHeaders() }
     );
   }
+  getEmployeeById2(id: string): Observable<Employee> {
+    console.log(id);
+    return this.http.get<Employee>(`${this.baseUrl}/api/employees/${id}`);
+  }
 }
 
 // import { HttpClient } from '@angular/common/http';
