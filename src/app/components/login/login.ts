@@ -38,6 +38,8 @@ export class Login {
   }
 }
 
+// https://angular.dev/guide/forms/template-driven-forms 
+
 // import { CommonModule } from '@angular/common';
 // import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 // import { FormsModule } from '@angular/forms';

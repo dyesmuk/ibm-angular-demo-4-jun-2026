@@ -6,36 +6,6 @@
         <div>
             <label>First Name</label>
             <input type="text" formControlName="firstName" />
-        </div>
-
-        <button type="submit">Register</button>
-
-    </form>
-
-    @if (errorMessage()) {
-    <p>{{ errorMessage() }}</p>
-    }
-
-    @if (registerResponse(); as response) {
-    <div>
-        <h3>Registered successfully!</h3>
-        <p>Name: {{ response.employee.fullName }}</p>
-        <p>Email: {{ response.employee.email }}</p>
-        <p>Role: {{ response.employee.role }}</p>
-        <p>Token: {{ response.token }}</p>
-    </div>
-    }
-
-</div>
-
-<!-- <div>
-    <h1>Register - Reactive Form</h1>
-
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-        <div>
-            <label>First Name</label>
-            <input type="text" formControlName="firstName" />
             @if (registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched) {
             <p>First name is required.</p>
             }
@@ -83,7 +53,56 @@
     </div>
     }
 
+</div>
+
+
+
+
+
+
+<!-- <div>
+    <h1>Register - Reactive Form</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" />
+        </div>
+
+        <div>
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" />
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" formControlName="email" />
+        </div>
+        <div>
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" />
+        </div>
+        <button type="submit">Register</button>
+
+    </form>
+
+    @if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+    }
+
+    @if (registerResponse(); as response) {
+    <div>
+        <h3>Registered successfully!</h3>
+        <p>Name: {{ response.employee.fullName }}</p>
+        <p>Email: {{ response.employee.email }}</p>
+        <p>Role: {{ response.employee.role }}</p>
+        <p>Token: {{ response.token }}</p>
+    </div>
+    }
+
 </div> -->
+
+
 
 <!-- <div>
     <h1>Register Component</h1>
