@@ -17,19 +17,9 @@
         </button>
     </form>
 
-    @if (errorMessage()) {
+    @if (loginMessage()) {
     <div>
-        {{ errorMessage() }}
-    </div>
-    }
-    @if (loggedInUser(); as user) {
-    <div>
-        <h3>Logged In Employee</h3>
-
-        <p>{{ user.employee.id }}</p>
-        <p>{{ user.employee.fullName }}</p>
-        <p>{{ user.employee.email }}</p>
-        <p>{{ user.token }}</p>
+        {{ loginMessage() }}
     </div>
     }
 
@@ -63,9 +53,9 @@
 
     </form>
 
-    @if (errorMessage()) {
+    @if (loginMessage()) {
     <div>
-        {{ errorMessage() }}
+        {{ loginMessage() }}
     </div>
     }
 
@@ -103,9 +93,9 @@
         <button type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
-    @if(errorMessage){
+    @if(loginMessage){
     <div>
-        {{ errorMessage }}
+        {{ loginMessage }}
     </div>
     }
 

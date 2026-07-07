@@ -2,7 +2,7 @@
 
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../services/user/user-service';
+import { AuthService } from '../../services/auth/auth-service';
 import { RegisterResponse } from '../../models/register-response.model';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class Register {
 
   private fb = inject(FormBuilder);
-  private userService = inject(UserService);
+  private authService = inject(AuthService);
   private router = inject(Router);
 
   registerResponse = signal<RegisterResponse | null>(null);
@@ -34,7 +34,7 @@ export class Register {
       return;
     }
 
-    this.userService.registerUser(this.registerForm.getRawValue()).subscribe({
+    this.authService.registerUser(this.registerForm.getRawValue()).subscribe({
       next: (response: any) => {
         console.log(response);
         this.registerResponse.set(response);
@@ -51,7 +51,7 @@ export class Register {
 
 // import { Component, inject, signal } from '@angular/core';
 // import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { UserService } from '../../services/user/user-service';
+// import { AuthService } from '../../services/user/user-service';
 // import { RegisterResponse } from '../../models/register-response.model';
 // import { Router } from '@angular/router';
 
@@ -64,7 +64,7 @@ export class Register {
 // export class Register {
 
 //   private fb = inject(FormBuilder);
-//   private userService = inject(UserService);
+//   private authService = inject(AuthService);
 //   private router = inject(Router);
 
 //   registerResponse = signal<RegisterResponse | null>(null);
@@ -101,7 +101,7 @@ export class Register {
 //     }
 
 
-//     this.userService.registerUser(this.registerForm.getRawValue()).subscribe({
+//     this.authService.registerUser(this.registerForm.getRawValue()).subscribe({
 //       next: (response) => {
 //         console.log(response);
 //         this.registerResponse.set(response);
@@ -120,7 +120,7 @@ export class Register {
 
 // import { Component, inject } from '@angular/core';
 // import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { UserService } from '../../services/user/user-service';
+// import { AuthService } from '../../services/user/user-service';
 // import { RegisterResponse } from '../../models/register-response.model';
 
 // @Component({
@@ -131,7 +131,7 @@ export class Register {
 // })
 // export class Register {
 //   private fb = inject(FormBuilder);
-//   private userService = inject(UserService);
+//   private authService = inject(AuthService);
 
 //   registerForm = this.fb.nonNullable.group({
 //     firstName: ['', Validators.required],
@@ -149,7 +149,7 @@ export class Register {
 //       return;
 //     }
 
-//     this.userService.registerUser(this.registerForm.getRawValue()).subscribe({
+//     this.authService.registerUser(this.registerForm.getRawValue()).subscribe({
 //       next: (response) => {
 //         console.log(response);
 //         this.registerResponse = response;

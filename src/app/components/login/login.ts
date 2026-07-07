@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight';
-import { UserService } from '../../services/user/user-service';
+import { AuthService } from '../../services/auth/auth-service';
 import { LoginRequest } from '../../models/login-request.model';
 import { LoginResponse } from '../../models/login-response.model';
 import { Router } from '@angular/router';
@@ -14,25 +14,28 @@ import { Router } from '@angular/router';
   styleUrl: './login.css',
 })
 export class Login {
-  userService = inject(UserService);
+  authService = inject(AuthService);
   private router = inject(Router);
 
   user: LoginRequest = { email: '', password: '' };
 
   loggedInUser = signal<LoginResponse | null>(null);
-  errorMessage = signal<string | null>(null);
+  loginMessage = signal<string | null>(null);
 
   login = () => {
-    this.userService.loginUser(this.user).subscribe({
+    this.authService.loginUser(this.user).subscribe({
       next: (data) => {
         console.log(data);
         this.loggedInUser.set(data);
-        localStorage.setItem('token', data.token); // store token 
-        this.router.navigate(['/employees']);
+        // localStorage.setItem('token', data.token); // store token 
+        this.authService.setLoggedIn(data.token); // better way to store token
+        setTimeout(() => {
+          this.router.navigate(['/employees']);
+        }, 1000);
       },
       error: (error) => {
         console.error(error);
-        this.errorMessage.set(error.error.error);
+        this.loginMessage.set(error.error.error);
       },
       complete: () => { console.log('completed.') }
     });
@@ -45,7 +48,7 @@ export class Login {
 // import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 // import { HighlightDirective } from '../../directives/highlight';
-// import { UserService } from '../../services/user/user-service';
+// import { AuthService } from '../../services/user/user-service';
 // import { LoginRequest } from '../../models/login-request.model';
 // import { LoginResponse } from '../../models/login-response.model';
 
@@ -59,22 +62,22 @@ export class Login {
 // export class Login {
 
 //   cdr = inject(ChangeDetectorRef);
-//   userService = inject(UserService);
+//   authService = inject(AuthService);
 //   user: LoginRequest = { email: '', password: '' };
 
 //   loggedInUser = signal<LoginResponse | null>(null);
-//   errorMessage = signal<string | null>(null);
+//   loginMessage = signal<string | null>(null);
 //   token: string = '';
 
 //   login = () => {
-//     this.userService.loginUser(this.user).subscribe({
+//     this.authService.loginUser(this.user).subscribe({
 //       next: (data) => {
 //         console.log(data);
 //         this.loggedInUser.set(data);
 //       },
 //       error: (error) => {
 //         console.error(error);
-//         this.errorMessage.set(error.error.error);
+//         this.loginMessage.set(error.error.error);
 //       },
 //       complete: () => { console.log('completed.') }
 //     });
@@ -85,7 +88,7 @@ export class Login {
 // import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 // import { HighlightDirective } from '../../directives/highlight';
-// import { UserService } from '../../services/user/user-service';
+// import { AuthService } from '../../services/user/user-service';
 // import { LoginRequest } from '../../models/login-request.model';
 // import { Employee } from '../../models/employee.model';
 
@@ -98,7 +101,7 @@ export class Login {
 // export class Login {
 
 //   cdr = inject(ChangeDetectorRef);
-//   userService = inject(UserService);
+//   authService = inject(AuthService);
 //   user: LoginRequest = { email: '', password: '' };
 //   //   user2 = signal<LoginRequest>({ email: '', password: '' });
 
@@ -107,12 +110,12 @@ export class Login {
 
 
 //   loggedInUser = signal<Employee | null>(null);
-//   errorMessage = signal<string | null>(null);
+//   loginMessage = signal<string | null>(null);
 //   token: string = '';
 
 
 //   login = () => {
-//     this.userService.loginUser(this.user).subscribe({
+//     this.authService.loginUser(this.user).subscribe({
 //       next: (data) => {
 //         console.log(data);
 //         this.loggedInUser.set(data.employee);
@@ -120,7 +123,7 @@ export class Login {
 //       },
 //       error: (error) => {
 //         console.error(error);
-//         this.errorMessage.set(error.error.error);
+//         this.loginMessage.set(error.error.error);
 //       },
 //       complete: () => { console.log('completed.') }
 //     });
@@ -131,7 +134,7 @@ export class Login {
 // import { ChangeDetectorRef, Component, inject } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 // import { HighlightDirective } from '../../directives/highlight';
-// import { UserService } from '../../services/user/user-service';
+// import { AuthService } from '../../services/user/user-service';
 // import { LoginRequest } from '../../models/login-request.model';
 // import { Employee } from '../../models/employee.model';
 
@@ -144,15 +147,15 @@ export class Login {
 // export class Login {
 
 //   cdr = inject(ChangeDetectorRef);
-//   userService = inject(UserService);
+//   authService = inject(AuthService);
 //   user: LoginRequest = { email: '', password: '' };
 //   loggedInUser: Employee | null = null;
-//   errorMessage: string = '';
+//   loginMessage: string = '';
 //   token: string = '';
 
 
 //   login = () => {
-//     this.userService.loginUser(this.user).subscribe({
+//     this.authService.loginUser(this.user).subscribe({
 //       next: (data) => {
 //         console.log(data);
 //         this.loggedInUser = data.employee;
@@ -161,7 +164,7 @@ export class Login {
 //       },
 //       error: (error) => {
 //         console.error(error);
-//         this.errorMessage = error.error.error;
+//         this.loginMessage = error.error.error;
 //         this.cdr.markForCheck();
 //       },
 //       complete: () => { console.log('completed.') }
@@ -175,7 +178,7 @@ export class Login {
 // // import { ChangeDetectorRef, Component, inject } from '@angular/core';
 // // import { FormsModule } from '@angular/forms';
 // // import { HighlightDirective } from '../../directives/highlight';
-// // import { UserService } from '../../services/user/user-service';
+// // import { AuthService } from '../../services/user/user-service';
 // // import User from '../../models/user.model';
 
 // // @Component({
@@ -187,14 +190,14 @@ export class Login {
 // // export class Login {
 
 // //   cdr = inject(ChangeDetectorRef);
-// //   userService = inject(UserService);
+// //   authService = inject(AuthService);
 // //   user: User = { id: 0, name: '', username: '', email: '' };
 
-// //   // constructor(private cdr: ChangeDetectorRef, private userService: UserService) { }
+// //   // constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
 
 // //   // syntax with error handling 
 // //   loadUser = () => {
-// //     this.userService.getUser(4).subscribe({
+// //     this.authService.getUser(4).subscribe({
 // //       next: (data) => {
 // //         console.log(data);
 // //         this.user = data;
@@ -224,7 +227,7 @@ export class Login {
 
 // // syntax for no error handling
 // // loadUser() {
-// //   this.userService.getUser(4).subscribe((abc) => {
+// //   this.authService.getUser(4).subscribe((abc) => {
 // //     console.log(abc);
 // //     this.user = abc;
 // //     this.cdr.markForCheck();
@@ -238,7 +241,7 @@ export class Login {
 // // import { ChangeDetectorRef, Component, inject } from '@angular/core';
 // // import { FormsModule } from '@angular/forms';
 // // import { HighlightDirective } from '../../directives/highlight';
-// // import { UserService, User } from '../../services/user/user-service';
+// // import { AuthService, User } from '../../services/user/user-service';
 // // import { interval } from 'rxjs';
 
 // // @Component({
@@ -254,10 +257,10 @@ export class Login {
 
 // //   //  newer versions 
 // //   cdr = inject(ChangeDetectorRef);
-// //   userService2 = inject(UserService);
+// //   authService2 = inject(AuthService);
 
 // //   // old syntax 
-// //   constructor(private abc: ChangeDetectorRef, private userSrvice: UserService) { }
+// //   constructor(private abc: ChangeDetectorRef, private userSrvice: AuthService) { }
 
 // //   startCounting() {
 
@@ -267,7 +270,7 @@ export class Login {
 // //       this.cdr.markForCheck();
 // //     });
 // //   }
-// //   // this.userService.
+// //   // this.authService.
 // // }
 
 
@@ -304,7 +307,7 @@ export class Login {
 // // import { ChangeDetectorRef, Component, inject } from '@angular/core';
 // // import { FormsModule } from '@angular/forms';
 // // import { HighlightDirective } from '../../directives/highlight';
-// // import { UserService, User } from '../../services/user/user-service';
+// // import { AuthService, User } from '../../services/user/user-service';
 
 // // @Component({
 // //   selector: 'app-login',
@@ -314,13 +317,13 @@ export class Login {
 // // })
 
 // // export class Login {
-// //   private userService = inject(UserService);
+// //   private authService = inject(AuthService);
 // //   private cdr = inject(ChangeDetectorRef);
 
 // //   user: User | null = null;
 
 // //   loadUser() {
-// //     this.userService.getUser(2).subscribe({
+// //     this.authService.getUser(2).subscribe({
 // //       next: (data) => {
 // //         console.log(data);
 // //         this.user = data;
@@ -335,7 +338,7 @@ export class Login {
 // // import { Component, inject, signal } from '@angular/core';
 // // import { FormsModule } from '@angular/forms';
 // // import { HighlightDirective } from '../../directives/highlight';
-// // import { UserService, User } from '../../services/user/user-service';
+// // import { AuthService, User } from '../../services/user/user-service';
 
 // // @Component({
 // //   selector: 'app-login',
@@ -344,7 +347,7 @@ export class Login {
 // //   styleUrl: './login.css',
 // // })
 // // export class Login {
-// //   private userService = inject(UserService);
+// //   private authService = inject(AuthService);
 
 // //   user = signal<User | null>(null);
 // //   loading = signal(false);
@@ -354,7 +357,7 @@ export class Login {
 // //     this.loading.set(true);
 // //     this.error.set(null);
 
-// //     this.userService.getUser(2).subscribe({
+// //     this.authService.getUser(2).subscribe({
 // //       next: (data) => {
 // //         this.user.set(data);
 // //         this.loading.set(false);

@@ -3,12 +3,30 @@
         <a routerLink="/home" routerLinkActive="active"><img src="/ibm-logo-transparent-icon.png" alt="IBM Logo"></a>
     </div>
     <div>
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+
+        @if (authService.isLoggedIn()) {
+        <a routerLink="/departments" routerLinkActive="active">Departments</a>
+        <a routerLink="/employees" routerLinkActive="active">Employees</a>
+        <a (click)="logout()">Logout</a>
+        } @else {
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/register" routerLinkActive="active">Register</a>
+        }
+    </div>
+</nav>
+
+<!-- <nav>
+    <div>
+        <a routerLink="/home" routerLinkActive="active"><img src="/ibm-logo-transparent-icon.png" alt="IBM Logo"></a>
+    </div>
+    <div>
         <a routerLink="/employees" routerLinkActive="active">Employees</a>
         <a routerLink="/login" routerLinkActive="active">Login</a>
         <a routerLink="/register" routerLinkActive="active">Register</a>
     </div>
 </nav>
-
+ -->
 
 
 <!-- <nav>
