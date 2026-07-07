@@ -1,4 +1,3 @@
-
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,16 +17,10 @@ export class Login {
   cdr = inject(ChangeDetectorRef);
   userService = inject(UserService);
   user: LoginRequest = { email: '', password: '' };
-//   user2 = signal<LoginRequest>({ email: '', password: '' });
-
-// user2.set('') // setter 
-//   user2() // getter 
-
 
   loggedInUser = signal<Employee | null>(null);
   errorMessage = signal<string | null>(null);
   token: string = '';
-
 
   login = () => {
     this.userService.loginUser(this.user).subscribe({
@@ -44,6 +37,52 @@ export class Login {
     });
   }
 }
+
+// import { CommonModule } from '@angular/common';
+// import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { HighlightDirective } from '../../directives/highlight';
+// import { UserService } from '../../services/user/user-service';
+// import { LoginRequest } from '../../models/login-request.model';
+// import { Employee } from '../../models/employee.model';
+
+// @Component({
+//   selector: 'app-login',
+//   imports: [CommonModule, FormsModule, HighlightDirective],
+//   templateUrl: './login.html',
+//   styleUrl: './login.css',
+// })
+// export class Login {
+
+//   cdr = inject(ChangeDetectorRef);
+//   userService = inject(UserService);
+//   user: LoginRequest = { email: '', password: '' };
+//   //   user2 = signal<LoginRequest>({ email: '', password: '' });
+
+//   // user2.set('') // setter 
+//   //   user2() // getter 
+
+
+//   loggedInUser = signal<Employee | null>(null);
+//   errorMessage = signal<string | null>(null);
+//   token: string = '';
+
+
+//   login = () => {
+//     this.userService.loginUser(this.user).subscribe({
+//       next: (data) => {
+//         console.log(data);
+//         this.loggedInUser.set(data.employee);
+//         this.token = data.token;
+//       },
+//       error: (error) => {
+//         console.error(error);
+//         this.errorMessage.set(error.error.error);
+//       },
+//       complete: () => { console.log('completed.') }
+//     });
+//   }
+// }
 
 // import { CommonModule } from '@angular/common';
 // import { ChangeDetectorRef, Component, inject } from '@angular/core';
@@ -340,6 +379,8 @@ export class Login {
 
 
 // // }
+
+
 
 
 

@@ -1,0 +1,40 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 24px;
+
+    background: #2d2d30;
+    border-bottom: 1px solid #444;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: auto;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a.active {
+    color: #4fc3f7;
+}
+
+nav img {
+    height: 24px;
+    display: block;
+}
+
+nav img:hover {
+    opacity: .9;
+}

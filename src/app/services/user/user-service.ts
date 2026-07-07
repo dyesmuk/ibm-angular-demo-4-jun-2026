@@ -20,6 +20,12 @@ export class UserService {
     console.log(loginRequest);
     return this.http.post<Employee>(`${this.baseUrl}/api/auth/login`, loginRequest);
   }
+
+  registerUser(loginRequest: LoginRequest): Observable<Employee> {
+    console.log(loginRequest);
+    return this.http.post<Employee>(`${this.baseUrl}/api/auth/login`, loginRequest);
+  }
+
 }
 
 
@@ -66,3 +72,4 @@ export class UserService {
 // export class UserService {
 
 // }
+

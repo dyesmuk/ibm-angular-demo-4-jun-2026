@@ -1,0 +1,42 @@
+main {
+    padding: 0;
+}
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 78px);
+    object-fit: cover;
+    filter: brightness(45%);
+}
+
+article {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    max-width: 650px;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 3.25rem;
+    color: white;
+}
+
+p {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: #f0f0f0;
+    line-height: 1.7;
+}
+
+button {
+    padding: 14px 32px;
+    font-size: 1rem;
+}
