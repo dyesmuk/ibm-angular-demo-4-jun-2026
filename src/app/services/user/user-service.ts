@@ -2,8 +2,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee } from '../../models/employee.model';
 import { LoginRequest } from '../../models/login-request.model';
+import { LoginResponse } from '../../models/login-response.model';
+import { RegisterResponse } from '../../models/register-response.model';
+import { RegisterRequest } from '../../models/register-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,16 +18,15 @@ export class UserService {
 
   private baseUrl: string = 'http://localhost:3000';
 
-  loginUser(loginRequest: LoginRequest): Observable<Employee> {
-    console.log(loginRequest);
-    return this.http.post<Employee>(`${this.baseUrl}/api/auth/login`, loginRequest);
+  loginUser(request: LoginRequest): Observable<LoginResponse> {
+    console.log(request);
+    return this.http.post<LoginResponse>(`${this.baseUrl}/api/auth/login`, request);
   }
 
-  registerUser(loginRequest: LoginRequest): Observable<Employee> {
-    console.log(loginRequest);
-    return this.http.post<Employee>(`${this.baseUrl}/api/auth/login`, loginRequest);
+  registerUser(request: RegisterRequest): Observable<RegisterResponse> {
+    console.log(request);
+    return this.http.post<RegisterResponse>(`${this.baseUrl}/api/auth/register`, request);
   }
-
 }
 
 

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight';
 import { UserService } from '../../services/user/user-service';
 import { LoginRequest } from '../../models/login-request.model';
-import { Employee } from '../../models/employee.model';
+import { LoginResponse } from '../../models/login-response.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,21 +14,20 @@ import { Employee } from '../../models/employee.model';
   styleUrl: './login.css',
 })
 export class Login {
-
-  cdr = inject(ChangeDetectorRef);
   userService = inject(UserService);
+  private router = inject(Router);
+
   user: LoginRequest = { email: '', password: '' };
 
-  loggedInUser = signal<Employee | null>(null);
+  loggedInUser = signal<LoginResponse | null>(null);
   errorMessage = signal<string | null>(null);
-  token: string = '';
 
   login = () => {
     this.userService.loginUser(this.user).subscribe({
       next: (data) => {
         console.log(data);
-        this.loggedInUser.set(data.employee);
-        this.token = data.token;
+        this.loggedInUser.set(data);
+        this.router.navigate(['/employees']);
       },
       error: (error) => {
         console.error(error);
@@ -37,6 +37,46 @@ export class Login {
     });
   }
 }
+
+// import { CommonModule } from '@angular/common';
+// import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { HighlightDirective } from '../../directives/highlight';
+// import { UserService } from '../../services/user/user-service';
+// import { LoginRequest } from '../../models/login-request.model';
+// import { LoginResponse } from '../../models/login-response.model';
+
+
+// @Component({
+//   selector: 'app-login',
+//   imports: [CommonModule, FormsModule, HighlightDirective],
+//   templateUrl: './login.html',
+//   styleUrl: './login.css',
+// })
+// export class Login {
+
+//   cdr = inject(ChangeDetectorRef);
+//   userService = inject(UserService);
+//   user: LoginRequest = { email: '', password: '' };
+
+//   loggedInUser = signal<LoginResponse | null>(null);
+//   errorMessage = signal<string | null>(null);
+//   token: string = '';
+
+//   login = () => {
+//     this.userService.loginUser(this.user).subscribe({
+//       next: (data) => {
+//         console.log(data);
+//         this.loggedInUser.set(data);
+//       },
+//       error: (error) => {
+//         console.error(error);
+//         this.errorMessage.set(error.error.error);
+//       },
+//       complete: () => { console.log('completed.') }
+//     });
+//   }
+// }
 
 // import { CommonModule } from '@angular/common';
 // import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
@@ -379,6 +419,8 @@ export class Login {
 
 
 // // }
+
+
 
 
 
