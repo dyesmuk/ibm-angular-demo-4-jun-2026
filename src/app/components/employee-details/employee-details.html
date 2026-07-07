@@ -1,1 +1,27 @@
-<p>employee-details works!</p>
+<div>
+    <h1>Employee Details</h1>
+
+    @if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+    }
+
+    @if (employee(); as emp) {
+    <div>
+        <p>Name: {{ emp.fullName }}</p>
+        <p>Email: {{ emp.email }}</p>
+        <p>Role: {{ emp.role }}</p>
+        <p>Active: {{ emp.isActive }}</p>
+        @if (emp.designation) {
+        <p>Designation: {{ emp.designation }}</p>
+        }
+        @if (emp.salary) {
+        <p>Salary: {{ emp.salary }}</p>
+        }
+        @if (emp.department) {
+        <p>Department: {{ emp.department.name }}</p>
+        }
+        <p>Joined: {{ emp.joinDate }}</p>
+    </div>
+    }
+
+</div>

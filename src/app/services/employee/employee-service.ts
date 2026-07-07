@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeListResponse } from '../../models/employee-list-response.model';
+import { Employee } from '../../models/employee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,14 @@ export class EmployeeService {
     console.log('getAllEmployees');
     return this.http.get<EmployeeListResponse>(
       `${this.baseUrl}/api/employees`,
+      { headers: this.getAuthHeaders() }
+    );
+  }
+
+  getEmployeeById(id: string): Observable<Employee> {
+    console.log(id);
+    return this.http.get<Employee>(
+      `${this.baseUrl}/api/employees/${id}`,
       { headers: this.getAuthHeaders() }
     );
   }
