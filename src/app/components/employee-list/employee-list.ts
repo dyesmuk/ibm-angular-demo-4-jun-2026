@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { EmployeeService } from '../../services/employee/employee-service';
 import { Employee } from '../../models/employee.model';
 import { Pagination } from '../../models/pagination.model';
@@ -18,14 +18,16 @@ export class EmployeeList {
   employees = signal<Employee[]>([]);
   pagination = signal<Pagination | null>(null);
   errorMessage = signal<string | null>(null);
+  currentPage = signal(1);
 
-  loadEmployees() {
-    console.log('loadEmployees');
-    this.employeeService.getAllEmployees().subscribe({
+  loadEmployees(page: number = 1) {
+    console.log('loadEmployees', page);
+    this.employeeService.getAllEmployees(page).subscribe({
       next: (response) => {
         console.log(response);
         this.employees.set(response.data);
         this.pagination.set(response.pagination);
+        this.currentPage.set(page);
       },
       error: (err) => {
         console.error(err);
@@ -33,7 +35,58 @@ export class EmployeeList {
       }
     });
   }
+
+  nextPage() {
+    const page = this.pagination();
+    if (page?.hasNextPage) {
+      this.loadEmployees(this.currentPage() + 1);
+    }
+  }
+
+  prevPage() {
+    const page = this.pagination();
+    if (page?.hasPrevPage) {
+      this.loadEmployees(this.currentPage() - 1);
+    }
+  }
 }
+
+// import { CommonModule } from '@angular/common';
+// import { Component, inject, OnInit, signal } from '@angular/core';
+// import { EmployeeService } from '../../services/employee/employee-service';
+// import { Employee } from '../../models/employee.model';
+// import { Pagination } from '../../models/pagination.model';
+// import { RouterLink } from '@angular/router';
+
+// @Component({
+//   selector: 'app-employee-list',
+//   imports: [CommonModule, RouterLink],
+//   templateUrl: './employee-list.html',
+//   styleUrl: './employee-list.css',
+// })
+// export class EmployeeList {
+
+//   private employeeService = inject(EmployeeService);
+
+//   employees = signal<Employee[]>([]);
+//   pagination = signal<Pagination | null>(null);
+//   errorMessage = signal<string | null>(null);
+
+//   loadEmployees() {
+//     console.log('loadEmployees');
+//     this.employeeService.getAllEmployees().subscribe({
+//       next: (response) => {
+//         console.log(response);
+//         this.employees.set(response.data);
+//         this.pagination.set(response.pagination);
+//       },
+//       error: (err) => {
+//         console.error(err);
+//         this.errorMessage.set('Failed to load employees.');
+//       }
+//     });
+//   }
+// }
 
 
 // ngIf 

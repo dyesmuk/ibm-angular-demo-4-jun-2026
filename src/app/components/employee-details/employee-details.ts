@@ -1,10 +1,12 @@
 import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { EmployeeService } from '../../services/employee/employee-service';
 import { Employee } from '../../models/employee.model';
+import { RouterLink } from '@angular/router';
+import { SalaryPipe } from '../../pipes/salary/salary-pipe';
 
 @Component({
   selector: 'app-employee-details',
-  imports: [],
+  imports: [RouterLink, SalaryPipe],
   templateUrl: './employee-details.html',
   styleUrl: './employee-details.css',
 })

@@ -8,6 +8,32 @@
     <p>{{ errorMessage() }}</p>
     }
 
+    <div>
+        @for (emp of employees(); track emp.id) {
+        <p><a [routerLink]="['/employees', emp.id]">{{ emp.fullName }}</a></p>
+        }
+    </div>
+
+    @if (pagination(); as page) {
+    <div>
+        <button (click)="prevPage()" [disabled]="!page.hasPrevPage">Previous</button>
+        <span>Page {{ page.page }} of {{ page.totalPages }} (Total: {{ page.total }})</span>
+        <button (click)="nextPage()" [disabled]="!page.hasNextPage">Next</button>
+    </div>
+    }
+
+</div>
+
+<!-- <div>
+    <h1>Employee List Component</h1>
+    <div>
+        <button (click)="loadEmployees()">Load Employees</button>
+    </div>
+
+    @if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+    }
+
     @if (pagination(); as page) {
     <p>Page {{ page.page }} of {{ page.totalPages }} (Total: {{ page.total }})</p>
     }
@@ -18,7 +44,7 @@
         }
     </div>
 
-</div>
+</div> -->
 
 
 <!-- <div>

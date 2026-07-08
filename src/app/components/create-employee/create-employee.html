@@ -1,0 +1,136 @@
+<div>
+    <h1>Create Employee</h1>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+        <fieldset>
+
+            <div>
+                <label>First Name</label>
+                <input type="text" formControlName="firstName" />
+                @if (employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched) {
+                <p role="alert">First name is required.</p>
+                }
+            </div>
+
+            <div>
+                <label>Last Name</label>
+                <input type="text" formControlName="lastName" />
+                @if (employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched) {
+                <p role="alert">Last name is required.</p>
+                }
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="email" formControlName="email" />
+                @if (employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched) {
+                <p role="alert">Enter a valid email.</p>
+                }
+            </div>
+
+            <div>
+                <label>Password</label>
+                <input type="password" formControlName="password" />
+                @if (employeeForm.get('password')?.invalid && employeeForm.get('password')?.touched) {
+                <p role="alert">Password must be at least 6 characters.</p>
+                }
+            </div>
+
+            <div>
+                <label>Designation</label>
+                <input type="text" formControlName="designation" />
+            </div>
+
+            <div>
+                <label>Salary</label>
+                <input type="number" formControlName="salary" />
+            </div>
+
+            <div>
+                <label>Role</label>
+                <select formControlName="role">
+                    <option value="employee">Employee</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+        </fieldset>
+
+        <button type="submit">Create Employee</button>
+
+    </form>
+
+    @if (errorMessage()) {
+    <p role="alert">{{ errorMessage() }}</p>
+    }
+
+</div>
+
+
+<!-- <div>
+    <h1>Add Employee</h1>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" />
+            @if (employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched) {
+            <p>First name is required.</p>
+            }
+        </div>
+
+        <div>
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" />
+            @if (employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched) {
+            <p>Last name is required.</p>
+            }
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" formControlName="email" />
+            @if (employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched) {
+            <p>Enter a valid email.</p>
+            }
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" formControlName="password" />
+            @if (employeeForm.get('password')?.invalid && employeeForm.get('password')?.touched) {
+            <p>Password must be at least 6 characters.</p>
+            }
+        </div>
+
+        <div>
+            <label>Designation</label>
+            <input type="text" formControlName="designation" />
+        </div>
+
+        <div>
+            <label>Salary</label>
+            <input type="number" formControlName="salary" />
+        </div>
+
+        <div>
+            <label>Role</label>
+            <select formControlName="role">
+                <option value="employee">Employee</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <button type="submit">Add Employee</button>
+
+    </form>
+
+    @if (errorMessage()) {
+    <p>{{ errorMessage() }}</p>
+    }
+
+</div> -->

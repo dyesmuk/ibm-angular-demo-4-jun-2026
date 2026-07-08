@@ -1,21 +1,29 @@
-import { Department } from "./department.model";
 import { EmployeeRole } from "./employee.role";
 
 export interface Employee {
+    token: string;
+    employee: Employee | null;
     _id: string;
+    id: string;
+
     firstName: string;
     lastName: string;
+    fullName: string;
+
     email: string;
     avatar: string | null;
+
     role: EmployeeRole;
+
+    designation: string;
+    salary: number;
     isActive: boolean;
-    designation?: string;
-    salary?: number;
-    department?: Department;
+
+    department: string;
+
     joinDate: string;
     createdAt: string;
     updatedAt: string;
-    fullName: string;
-    id: string;
+
     __v: number;
 }
