@@ -10,6 +10,7 @@ import { DepartmentDetails } from '../department-details/department-details';
 export class DepartmentList {
 
   departmentData: string = "Admin";
+  departmentData2 = signal<string>("HR");
 
 
 

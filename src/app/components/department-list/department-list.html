@@ -1,8 +1,9 @@
 <div>
     <h1>Department List Component (Parent)</h1>
     <p>Department data: {{ departmentData }}</p>
+    <p>Department data2: {{ departmentData2() }}</p>
 
-    <app-department-details [dataFromDept]="departmentData" ></app-department-details>
+    <app-department-details [dataFromDept]="departmentData" [dataFromDept2]="departmentData2()" ></app-department-details>
 </div>
 
 

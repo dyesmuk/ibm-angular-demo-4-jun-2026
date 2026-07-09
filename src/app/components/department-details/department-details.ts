@@ -10,7 +10,8 @@ export class DepartmentDetails {
 
   @Input()
   dataFromDept: string = '';
-
+  dataFromDept2 = input<string>();
+  // dataFromDept2: string = '';
 
 }
 
