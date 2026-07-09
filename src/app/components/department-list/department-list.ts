@@ -12,6 +12,13 @@ export class DepartmentList {
   departmentData: string = "Admin";
   departmentData2 = signal<string>("HR");
 
+  dataFromChild: string = '';
+
+  receiveData(data: string) {
+    this.dataFromChild = data;
+
+  }
+
 
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, input, output } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-department-details',
@@ -12,6 +12,14 @@ export class DepartmentDetails {
   dataFromDept: string = '';
   dataFromDept2 = input<string>();
   // dataFromDept2: string = '';
+
+  childData: string = 'Marketing';
+
+  @Output()
+  dataEvent = new EventEmitter<string>();
+  sendData() {
+    this.dataEvent.emit(this.childData);
+  }
 
 }
 
