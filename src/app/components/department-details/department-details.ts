@@ -11,18 +11,22 @@ export class DepartmentDetails {
   @Input()
   dataFromDept: string = '';
   dataFromDept2 = input<string>();
-  // dataFromDept2: string = '';
 
   childData: string = 'Marketing';
 
-  @Output()
-  dataEvent = new EventEmitter<string>();
-  
+  @Output() dataEvent = new EventEmitter<string>();
+
+  childData2: string = 'Finance';
+
+  dataEvent2 = output<string>();
+
   sendData() {
     this.dataEvent.emit(this.childData);
+    this.dataEvent2.emit(this.childData2);
   }
 
 }
+
 
 
 
