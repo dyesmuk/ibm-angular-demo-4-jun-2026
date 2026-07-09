@@ -1,13 +1,16 @@
 <div>
     <h1>Department Details Component (Child)</h1>
     <h3>Receive data from parent (automatically)</h3>
-        <p>Department data: {{ dataFromDept }}</p>
-        <p>Department data2: {{ dataFromDept2() }}</p>
+    <p>Department data: {{ dataFromDept }}</p>
+    <p>Department data2: {{ dataFromDept2() }}</p>
     <h3>Send data to parent (manually)</h3>
     <p>childData: {{childData}}</p>
     <p>childData2: {{childData2}}</p>
 
-    <button (click)="sendData()" >Send</button>
+    <button (click)="sendData()">Send</button>
+    <br>
+    <br>
+    <button (click)="sendData2()">Send2</button>
 
 
 </div>

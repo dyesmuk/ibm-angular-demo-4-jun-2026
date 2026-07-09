@@ -22,9 +22,11 @@ export class DepartmentDetails {
 
   sendData() {
     this.dataEvent.emit(this.childData);
-    this.dataEvent2.emit(this.childData2);
   }
 
+  sendData2() {
+    this.dataEvent2.emit(this.childData2);
+  }
 }
 
 
@@ -53,6 +55,7 @@ export class DepartmentDetails {
 
 
 // }
+
 
 
 
