@@ -43,6 +43,11 @@ export class EmployeeService {
     console.log(employee);
     return this.http.post<Employee>(`${this.baseUrl}/api/employees`, employee);
   }
+  
+  removeEmployee(id: string): Observable<Employee> {
+    console.log(id);
+    return this.http.delete<Employee>(`${this.baseUrl}/api/employees/${id}`);
+  }
 
 }
 

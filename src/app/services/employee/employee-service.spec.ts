@@ -46,9 +46,7 @@ describe('EmployeeService', () => {
       expect(res).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne(
-      'http://localhost:3000/api/employees?page=1&limit=10'
-    );
+    const req = httpMock.expectOne('http://localhost:3000/api/employees?page=1&limit=10');
 
     expect(req.request.method).toBe('GET');
 

@@ -4,6 +4,7 @@ import { Employee } from '../../models/employee.model';
 import { RouterLink } from '@angular/router';
 import { SalaryPipe } from '../../pipes/salary/salary-pipe';
 import { CommonModule } from '@angular/common';
+import { ModalService } from '../../shared/services/modal/modal';
 
 @Component({
   selector: 'app-employee-details',
@@ -13,7 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class EmployeeDetails implements OnInit {
 
-  private employeeService = inject(EmployeeService);
+
+  private modalService = inject(ModalService)
+  private employeeService = inject(EmployeeService)
 
   id = input.required<string>();
 
@@ -32,4 +35,18 @@ export class EmployeeDetails implements OnInit {
       }
     });
   }
+  async onDelete() {
+    const confirmed = await this.modalService.confirm({
+      title: 'Delete Employee',
+      message: `Are you sure you want to remove ${this.employee()?.firstName}? This cannot be undone.`,
+      confirmText: 'Delete',
+      cancelText: 'Keep',
+    })
+
+    if (confirmed) {
+      this.employeeService.removeEmployee(this.id())
+    }
+  }
+
 }
+
