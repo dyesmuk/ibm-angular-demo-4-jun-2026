@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'salary',
 })
 export class SalaryPipe implements PipeTransform {
+  
   transform(value: number, currency: string = 'INR'): string {
     if (value == null || isNaN(value)) return '';
 
@@ -28,3 +29,4 @@ export class SalaryPipe implements PipeTransform {
 //     return null;
 //   }
 // }
+

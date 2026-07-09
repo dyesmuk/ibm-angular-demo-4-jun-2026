@@ -1,5 +1,7 @@
 <div>
     <h1>Employee Details</h1>
+    <h3> {{ 123456789 | currency : 'INR'}} </h3>
+    <h3> {{ 123456789 | salary }} </h3>
     <div>
         <a routerLink="/employees">Back to Employee List</a>
     </div>
@@ -19,6 +21,8 @@
         <p>Designation: {{ emp.designation }}</p>
         }
         @if (emp.salary) {
+        <p>Salary: {{ emp.salary }}</p>
+        <p>Salary: {{ emp.salary | currency : 'INR' }}</p>
         <p>Salary: {{ emp.salary | salary }}</p>
         }
         @if (emp.department) {

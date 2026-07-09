@@ -242,7 +242,7 @@ input,
 select,
 textarea {
     width: 100%;
-    padding: .75rem;
+    padding: .50rem;
 
     margin-bottom: 1rem;
 
@@ -274,7 +274,7 @@ textarea:focus {
 ==============================================================*/
 
 button {
-    padding: .75rem 1.5rem;
+    padding: .50rem 1.5rem;
 
     border: none;
 

@@ -10,9 +10,9 @@ section {
 img {
     display: block;
     width: 100%;
-    height: calc(100vh - 78px);
+    height: calc(100vh - 125px);
     object-fit: cover;
-    filter: brightness(45%);
+    filter: brightness(50%);
 }
 
 article {

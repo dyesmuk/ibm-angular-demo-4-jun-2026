@@ -1,1 +1,17 @@
-<p>department-list works!</p>
+<div>
+    <h1>Department List Component (Parent)</h1>
+    <p>Department data: {{ departmentData }}</p>
+
+    <app-department-details [dataFromDept]="departmentData" ></app-department-details>
+</div>
+
+
+<!-- <div>
+    <h1>Department List Component</h1>
+    <p>Department name: {{username()}}</p>
+    <p>Department name2: {{username2}}</p>
+    <h3>Received from Child: {{ message() }}</h3>
+
+    <app-department-details [name]="username()" [name2]="username2" (departmentSelected)="onDepartmentSelected($event)">
+    </app-department-details>
+</div> -->

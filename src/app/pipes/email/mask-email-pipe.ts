@@ -8,3 +8,4 @@ export class MaskEmailPipe implements PipeTransform {
     return null;
   }
 }
+
