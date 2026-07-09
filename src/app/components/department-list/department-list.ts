@@ -16,7 +16,6 @@ export class DepartmentList {
 
   receiveData(data: string) {
     this.dataFromChild = data;
-
   }
 
 

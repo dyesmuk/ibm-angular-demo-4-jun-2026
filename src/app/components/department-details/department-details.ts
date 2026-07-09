@@ -17,6 +17,7 @@ export class DepartmentDetails {
 
   @Output()
   dataEvent = new EventEmitter<string>();
+  
   sendData() {
     this.dataEvent.emit(this.childData);
   }
